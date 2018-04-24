@@ -1,6 +1,7 @@
 # dotfiles
-My personal dotfiles configs
 
-# Font
+Personal relatively important ricing configs.
 
-Font used is "Hasklig". It can be found on AUR, here: https://aur.archlinux.org/packages/otf-hasklig/ and also as a standalone package here: https://github.com/i-tu/Hasklig.
+# Fonts
+
+http://nerdfonts.com/
