@@ -173,6 +173,7 @@ bar {
 
 # change wallpaper
 exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/Newmusic_u18chan.png
+exec wal -i ~/Pictures/Wallpapers/Newmusic_u18chan.png
 
 # font
 font pango:Mononoki Regular 14px
@@ -196,6 +197,9 @@ bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
 bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
 
 # Power options
+# TODO: create options for these two
+# poweroff
+# reboot
 bindsym --release Ctrl+$mod+Pause exec i3exit suspend
 bindsym --release $mod+Pause exec i3exit lock
 
@@ -204,5 +208,5 @@ for_window [class=".*"] border pixel 0
 hide_edge_borders both
 
 # Printscreen
-bindsym --release Print exec import -window root "~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png"
-bindsym --release Shift+Print exec import "~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png"
+bindsym --release Print exec import -window root "/home/renato/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png"
+bindsym --release Shift+Print exec import "/home/renato/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png"
