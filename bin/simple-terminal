@@ -1,0 +1,3 @@
+#!/bin/sh
+# Starts simple-terminal and applies pywal's theme.
+st | wal -R
