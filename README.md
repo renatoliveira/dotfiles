@@ -71,7 +71,8 @@ Fortunately, when you spend some minutes understanding how Xfconf files work, an
 
 Thunar, being designed for XFCE, comes with a handy CLI tool called `xfconf-query`. It allows you to query xfc-things settings. Like this:
 
-```$ xfconf-query -c thunar -p /last-menubar-visible
+```
+$ xfconf-query -c thunar -p /last-menubar-visible
 false
 ```
 
