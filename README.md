@@ -62,3 +62,17 @@ From the Arch Linux wiki [[source](https://wiki.archlinux.org/index.php/I3#Teari
     ```
 4. Add the following line to i3's config file: `exec compton --config ~/.config/compton.conf -b`.
 5. Reload your i3 with `$Mod+Shift+R`.
+
+# I was dumb enough to mess with Thunar's settings using i3, now I can't see the menu bar anymore and undo the shit I made...
+
+First of all: congratulations! I did the same thing. Reinstalling Thunar won't change a single thing. You have to navigate to the settings file and toggle a property.
+
+Fortunately, when you spend some minutes understanding how Xfconf files work, and how to edit the settings, it is pretty easy to undo the shit.
+
+Thunar, being designed for XFCE, comes with a handy CLI tool called `xfconf-query`. It allows you to query xfc-things settings. Like this:
+
+```$ xfconf-query -c thunar -p /last-menubar-visible
+false
+```
+
+And a single parameter in this command can toggle the property. Use `--toggle`. Like `xfconf-query -c thunar -p /last-menubar-visible --toggle`. Now the property should be `true` again and you'll see the menu bar.
