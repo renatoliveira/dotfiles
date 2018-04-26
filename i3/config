@@ -249,3 +249,7 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
 bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+
+# Start compton with given arguments. Use compton to stop tearing
+# Search for V-Sync with i3 for more details.
+exec compton --config ~/.config/compton.conf -b

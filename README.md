@@ -61,3 +61,4 @@ From the Arch Linux wiki [[source](https://wiki.archlinux.org/index.php/I3#Teari
 	xrender-sync-fence = true;
     ```
 4. Add the following line to i3's config file: `exec compton --config ~/.config/compton.conf -b`.
+5. Reload your i3 with `$Mod+Shift+R`.
