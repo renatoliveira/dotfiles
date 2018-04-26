@@ -13,7 +13,8 @@ and open, for example, your `~/.cache/wal/colors.css` file. Wal should have put 
 
 Expected result:
 
-```bar {
+```
+bar {
 	status_command i3status
         colors {
                 set_from_resource $color0 i3wm.color0
