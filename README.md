@@ -41,3 +41,23 @@ bar {
         }
 }
 ```
+# i3 v-sync issues
+
+From the Arch Linux wiki [[source](https://wiki.archlinux.org/index.php/I3#Tearing)]:
+
+> i3 does **[not properly implement double buffering](https://github.com/i3/i3/issues/661)** hence tearing or flickering may occur. To prevent this, install and configure **compton**.
+
+1. Install compton with `yaourt -S compton`.
+2. Create the config file with `touch ~/.config/compton.conf`
+3. Add the following settings to the file and save it:
+
+    ```
+	backend = "glx";
+	vsync = "opengl-swc";
+
+	glx-copy-from-front = true;
+	glx-swap-method = 2;
+	xrender-sync = true;
+	xrender-sync-fence = true;
+    ```
+4. Add the following line to i3's config file: `exec compton --config ~/.config/compton.conf -b`.
