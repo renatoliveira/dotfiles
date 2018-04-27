@@ -1,0 +1,44 @@
+#!/bin/sh
+lockWithWallpaper() {
+    # We check if the lock background is present.
+    # If it is not, then we generate it
+    # based on our current wallpaper using
+    # 'import' to take a screenshot and
+    # 'convert' to blur the image
+	if ! [ -e ~/.config/i3/lock.png ]
+	then
+		import -silent -window root ~/.config/i3/lock.png
+		convert ~/.config/i3/lock.png -scale 25% -blur 0x20 -scale 400% ~/.config/i3/lock.png
+	fi;
+
+    # then, finally, we call i3lock with
+    # the new, blurred, background
+	i3lock -i ~/.config/i3/lock.png
+}
+case "$1" in
+    lock)
+        lockWithWallpaper
+        ;;
+    logout)
+        lockWithWallpaper
+        i3-msg exit
+        ;;
+    suspend)
+        lockWithWallpaper && systemctl suspend
+        ;;
+    hibernate)
+        lockWithWallpaper
+        systemctl hibernate
+        ;;
+    reboot)
+        systemctl reboot
+        ;;
+    shutdown)
+        systemctl poweroff
+        ;;
+    *)
+        echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+        exit 2
+esac
+
+exit 0
