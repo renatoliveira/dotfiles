@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# "$#"   	count of arguments passed to the script
+# -d $x  	is it a directory? returns true or false
+if [[ "$#" -ne 1 ]] || [ -d "$1" ]; then
+	echo ""
+	echo "	Usage: i3wallpaper <wallpaper_file>"
+	echo ""
+	exit 1
+fi
+
+# basename	return non-directory portion of a pathname
+ext=$(basename $1)
+
+# ${string##substring} Deletes longest match of $substring from front
+# of $string.
+ext="${ext##*.}"
+
+# create the target path and file name as 'current'
+target=~/Pictures/Wallpapers/current
+cp "$1" $target
+
+# set the image as wallpaper with 'feh'
+feh --bg-fill $target
+
+# generate color schema with wal
+wal -i $target
+
