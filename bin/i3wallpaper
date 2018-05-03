@@ -12,17 +12,18 @@ fi
 # basename	return non-directory portion of a pathname
 ext=$(basename $1)
 
+echo "Filename: $ext"
 # ${string##substring} Deletes longest match of $substring from front
 # of $string.
 ext="${ext##*.}"
+echo "File extension: $ext"
 
 # create the target path and file name as 'current'
 target=~/Pictures/Wallpapers/current
+echo "Copying $1 to $target..."
 cp "$1" $target
 
+echo "Target: $target"
 # set the image as wallpaper with 'feh'
-feh --bg-fill $target
-
 # generate color schema with wal
-wal -i $target
-
+feh --bg-fill $target && wal -i $target -c
