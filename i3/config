@@ -198,8 +198,8 @@ bar {
 }
 
 # change wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/Newmusic_u18chan.png
-exec wal -i ~/Pictures/Wallpapers/Newmusic_u18chan.png
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/current
+exec wal -i ~/Pictures/Wallpapers/current
 
 # font
 font pango:Mononoki Regular 14px
