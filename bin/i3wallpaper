@@ -27,3 +27,7 @@ echo "Target: $target"
 # set the image as wallpaper with 'feh'
 # generate color schema with wal
 feh --bg-fill $target && wal -i $target -c
+
+cp "$1" ~/.config/i3/lockwallpaper
+convert ~/.config/i3/lockwallpaper -scale 25% -blur 0x20 -scale 400 ~/.config/i3/lockwallpaper
+convert -scale 2560x1080^ ~/.config/i3/lockwallpaper ~/.config/i3/lockwallpaper

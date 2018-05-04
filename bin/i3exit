@@ -5,15 +5,16 @@ lockWithWallpaper() {
     # based on our current wallpaper using
     # 'import' to take a screenshot and
     # 'convert' to blur the image
-	if ! [ -e ~/.config/i3/lock.png ]
+	if ! [ -e ~/.config/i3/lockwallpaper ]
 	then
-		import -silent -window root ~/.config/i3/lock.png
-		convert ~/.config/i3/lock.png -scale 25% -blur 0x20 -scale 400% ~/.config/i3/lock.png
+		cp ~/Pictures/Wallpapers/current ~/.config/i3/lockwallpaper
+		convert ~/.config/i3/lockwallpaper -scale 25% -blur 0x20 -scale 400% ~/.config/i3/lockwallpaper
+		convert -scale 2560x1080^ ~/.config/i3/lockwallpaper ~/.config/i3/lockwallpaper
 	fi;
 
     # then, finally, we call i3lock with
     # the new, blurred, background
-	i3lock -i ~/.config/i3/lock.png
+	i3lock -i ~/.config/i3/lockwallpaper
 }
 case "$1" in
     lock)
