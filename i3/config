@@ -31,9 +31,10 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec xterm
-#bindsym $mod+Return exec urxvt
-bindsym $mod+Return exec st
+bindsym $mod+Return exec urxvt
+
+# open ranger as file manager
+bindsym $mod+Shift+Return exec "urxvt -e ranger ~"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -170,7 +171,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	status_command i3status | ~/Documents/GitHub/i3spotifystatus/pystatus.py
-
         font pango:SauceCodePro Nerd Font 14px
         colors {
                 set_from_resource $color0 i3wm.color0
@@ -210,7 +210,7 @@ gaps outer 0
 
 # temporary gaps
 workspace 10 gaps inner 150
-workspace 10 gaps outer 100
+workspace 10 gaps outer 150
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -234,9 +234,16 @@ for_window [class=".*"] border pixel 0
 hide_edge_borders both
 
 # Printscreen
-bindsym --release Print exec import -window root "/home/renato/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png"
-bindsym --release Shift+Print exec import "/home/renato/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png"
+bindsym --release Print exec import -window root "/home/renato/Pictures/Screenshots/$(date '+%Y-%m-%d-%H-%M-%s')-screenshot.png"
+bindsym --release Shift+Print exec echo "running..." && import "/home/renato/Pictures/Screenshots/$(date '+%Y-%m-%d-%H-%M-%s')-screenshot.png" && thunar ~/Pictures/Screenshots
 
+########### From wal Github
+# https://github.com/dylanaraps/pywal/wiki/Customization#i3
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
@@ -246,10 +253,13 @@ client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
+
 client.background       $bg
 
+# PROTIP: You can also dynamically set dmenu's colors this way:
 bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 
 # Start compton with given arguments. Use compton to stop tearing
 # Search for V-Sync with i3 for more details.
 exec compton --config ~/.config/compton.conf -b
+#exec --no-startup-id i3exit lock
