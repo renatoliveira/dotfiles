@@ -77,3 +77,12 @@ false
 ```
 
 And a single parameter in this command can toggle the property. Use `--toggle`. Like `xfconf-query -c thunar -p /last-menubar-visible --toggle`. Now the property should be `true` again and you'll see the menu bar.
+
+# Cedilla (ç) issue
+
+Note: To the person who changed cedilla (ç) to `AltGr+,`: please go sodomize yourself.
+
+So, to get cedilla to work just like it used to (`'`+`c`) apparently all I needed to do was to use `ibus`. Needed to start it as a deamon everytime the session was loaded. Using an US keyboard (Razer Blackwidow Stealth 2014) I set it to load the "English (US, International with dead-keys)" input method. But this wasn't enough. After some days trying to get used to this new shortcut, I've found that there is a X11 Compose file for Brazilian Portuguese.
+
+The answer was provided by [Gunnar Hjalmarsson on Ask Ubuntu](https://askubuntu.com/a/605165/828690). I generated the locale by issuing `sudo locale-gen pt_BR.UTF-8` and adding the `export LC_CTYPE=pt_BR.UTF-8` line to the `~/.profile` ffile.
+
